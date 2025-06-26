@@ -89,9 +89,11 @@ public class User {
         return orders;
     }
 
+
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
+
         return Objects.equals(id, user.id);
     }
 
