@@ -5,12 +5,12 @@ import com.devsuperior.dscommerce.projections.ProductProjectioMin;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.NativeQuery;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ProductRepository extends JpaRepository <Product,Long> {
 
 
-    @NativeQuery(value = "SELECT * "
+    @Query(nativeQuery = true,value = "SELECT * "
             +"FROM tb_product "
             +"WHERE UPPER (name) LIKE UPPER(CONCAT('%',:name,'%'))",
     countQuery = "SELECT count(*) "
