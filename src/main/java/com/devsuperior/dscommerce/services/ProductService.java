@@ -1,7 +1,9 @@
 package com.devsuperior.dscommerce.services;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductProjectionDTO;
 import com.devsuperior.dscommerce.entites.Product;
+import com.devsuperior.dscommerce.projections.ProductProjectioMin;
 import com.devsuperior.dscommerce.repository.ProductRepository;
 import com.devsuperior.dscommerce.services.exceptions.DatabaseException;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
@@ -34,9 +36,10 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ProductDTO> findAll(Pageable pageable){
-        Page<Product> resul = repository.findAll(pageable);
-        return resul.map(x -> new ProductDTO(x));
+    public Page<ProductProjectionDTO> buscarProductName(String name,Pageable pageable){
+        Page<ProductProjectioMin> list = repository.buscarProductMin(name,pageable);
+        Page<ProductProjectionDTO> result = list.map(x -> new ProductProjectionDTO(x));
+        return result;
     }
 
     @Transactional

@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.controllers;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductProjectionDTO;
 import com.devsuperior.dscommerce.entites.Product;
 import com.devsuperior.dscommerce.services.ProductService;
 import jakarta.validation.Valid;
@@ -29,9 +30,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> finAll(Pageable pageable){
-         Page<ProductDTO> dtoPage = service.findAll(pageable);
-         return ResponseEntity.ok(dtoPage);
+    public ResponseEntity<Page<ProductProjectionDTO>> findAll(@RequestParam(name = "name",defaultValue = "") String name,Pageable pageable){
+        Page<ProductProjectionDTO> dtoPage = service.buscarProductName(name,pageable);
+        return ResponseEntity.ok(dtoPage);
     }
 
     @PostMapping
