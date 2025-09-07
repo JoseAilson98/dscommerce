@@ -6,5 +6,6 @@ public interface ProductProjectioMin {
     Long getId();
     String getName();
     Double getPrice ();
-    String getImgUrl();
+    String getImg_url();
+
 }

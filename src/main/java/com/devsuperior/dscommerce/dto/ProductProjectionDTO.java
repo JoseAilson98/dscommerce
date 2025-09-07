@@ -23,7 +23,7 @@ public class ProductProjectionDTO {
         id = projectioMin.getId();
         name = projectioMin.getName();
         price = projectioMin.getPrice();
-        imgUrl = projectioMin.getImgUrl();
+        imgUrl = projectioMin.getImg_url();
     }
 
     public Long getId() {
